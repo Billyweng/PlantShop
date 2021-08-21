@@ -1,0 +1,28 @@
+@for $i from 0 through 4 {
+    [data-inset="#{$i * 0.5}rem"] {
+        padding: $i * 0.5rem;
+    }
+    [data-hinset="#{$i*0.5}rem"]{
+        padding: 0 $i*0.5rem;
+    }
+    [data-vinset="#{$i*0.5}rem"]{
+        padding:$i*0.5rem 0rem;
+    }
+}
+@for $i from 0 through 50 {
+    [data-inset="#{$i}px"]{
+        padding: $i * 1px;
+    }
+    [data-hinset="#{$i}px"]{
+        padding: 0 $i * 1px;
+    }
+    [data-vinset="#{$i}px"]{
+        padding:$i * 1px 0;
+    }
+}
+
+@for $i from 0 through 100 {
+    [data-vh="#{$i}vh"] {
+        width: $i * 1vh;
+    }
+}

@@ -1,0 +1,199 @@
+@mixin flexBox($direction, $alignItems, $justifyContent) {
+    display: flex;
+    flex-direction: $direction;
+    align-items: $alignItems;
+    justify-content: $justifyContent;
+}
+
+@mixin boxSizing {
+    box-sizing: border-box;
+}
+
+
+// [class^="row"] {
+//     background: rgb(101, 229, 238);
+// }
+
+// [class*=" row"] {
+//     background: rgb(112, 231, 176);
+// }
+
+@for $i from 0 through 24 {
+    .flex_#{$i} {
+        flex: $i;
+    }
+}
+
+@for $i from 0 through 100{
+    .width_#{$i}{
+        width: calc(1% * #{$i});
+        @if $i == 0{
+            width: auto;
+        }
+    }
+}
+
+@for $i from 0 through 100{
+    .height_#{$i}{
+        height: calc(1% * #{$i});
+        @if  $i == 0 {
+            height: auto;
+        }
+    }
+}
+
+
+@for $i from 0 through 6{
+    .padding_#{$i}{
+        padding: calc(0.5rem * #{$i});
+    }
+}
+
+@for $i from 0 through 6{
+    .padding_v_#{$i}{
+        padding: calc(0.5rem * #{$i}) 0;
+    }
+}
+
+
+
+
+
+
+.row {
+    @include boxSizing;
+    margin: 0;
+
+    &.horizontal {
+        @include flexBox(row, flex-start, flex-start);
+        
+        &.v_center {
+            @include flexBox(row, center, flex-start);
+
+            &.left{
+                justify-content: flex-start;
+            }
+            &.center{
+                justify-content: center;
+            }
+            &.right{
+                justify-content: flex-end;
+            }
+        }
+
+        &.h_center {
+            @include flexBox(row, flex-start, center);
+        }
+
+        &.h_end {
+            @include flexBox(row, flex-start, flex-end);
+        }
+
+        &.bottom_left {
+            @include flexBox(row, flex-end, flex-start);
+        }
+
+        &.bottom_center {
+            @include flexBox(row, flex-end, center);
+        }
+
+        &.bottom_right {
+            @include flexBox(row, flex-end, flex-end);
+        }
+
+        &.stretch {
+            align-items: stretch;
+        }
+    }
+
+    &.vertical {
+        @include flexBox(column, flex-start, flex-start);
+        
+        &.v_center {
+            @include flexBox(column, flex-start, center);
+            &.left{
+                justify-content: flex-start;
+            }
+            &.center{
+                justify-content: center;
+            }
+            &.right{
+                justify-content: flex-end;
+            }
+        }
+
+        &.h_center {
+            @include flexBox(column, center, flex-start);
+        }
+
+        &.h_end {
+            @include flexBox(column, flex-end, flex-start);
+        }
+
+        &.bottom_left {
+            @include flexBox(column, flex-start, flex-end);
+        }
+
+        &.bottom_center {
+            @include flexBox(column, center, flex-end);
+        }
+
+        &.bottom_right {
+            @include flexBox(column, flex-end, flex-end);
+        }
+    }
+
+    &.center {
+        align-items: center;
+        justify-content: center;
+    }
+
+    &.space_between {
+        justify-content: space-between;
+        
+        &.center{
+            align-items: center;
+        }
+
+        &.start{
+            align-items: flex-start;
+        }
+        &.end{
+            align-items: flex-end;
+        }
+    }
+
+    &.space_around {
+        justify-content: space-around;
+    }
+
+    &.space_evenly {
+        justify-content: space-evenly;
+    }
+
+
+    &.wrap {
+        flex-wrap: wrap;
+    }
+}
+
+.relative{
+    position: relative;
+}
+
+.absolute{
+    position: absolute;
+    
+    &.right{
+        right: 0;
+    }
+    &.left{
+        left: 0;
+    }
+    &.top{
+        top: 0;
+    }
+    &.bottom{
+        bottom: 0;
+    }
+}
